@@ -1,3 +1,13 @@
+/* Runs a test to see if the expected argument is === to the value returned by the function2test argument */
+function myFunctionTest(expected, function2test) {
+  const result = function2test();
+  if (expected === result) {
+    return "TEST SUCCEEDED";
+  } else {
+    return "TEST FAILED. Expected " + expected + " found " + result;
+  }
+}
+
 // Function to find the maximum of two numbers
 function max(a, b) {
   if (a > b) {
@@ -6,23 +16,41 @@ function max(a, b) {
     return b;
   }
 }
+/* Test cases for max function */
+console.log("Expected output of max(20, 10) is 20. " + myFunctionTest(20, function () {
+  return max(20, 10);
+}));
+console.assert(max(20, 10) === 20, "Test for max failed!");
 
 // Function to find the maximum of three numbers
 function maxOfThree(a, b, c) {
-  if (a >= b && a >= c) {
-    return a;
-  } else if (b >= a && b >= c) {
-    return b;
-  } else {
-    return c;
-  }
+  return max(max(a, b), c);
 }
+/* Test cases for maxOfThree function */
+console.log("Expected output of maxOfThree(5, 4, 44) is 44. " + myFunctionTest(44, function () {
+  return maxOfThree(5, 4, 44);
+}));
+console.log("Expected output of maxOfThree(55, 4, 44) is 55. " + myFunctionTest(55, function () {
+  return maxOfThree(55, 4, 44);
+}));
+console.log("Expected output of maxOfThree(55, 4, 44) is 55. " + myFunctionTest(4, function () {
+  return maxOfThree(55, 4, 44);
+}));
+console.assert(maxOfThree(5, 4, 44) === 44, "Test for maxOfThree failed!");
 
 // Function to check if a character is a vowel
 function isVowel(char) {
   const vowels = ['a', 'e', 'i', 'o', 'u'];
   return vowels.indexOf(char.toLowerCase()) !== -1;
 }
+/* Test cases for isVowel function */
+console.log("Expected output of isVowel('a') is true. " + myFunctionTest(true, function () {
+  return isVowel('a');
+}));
+console.log("Expected output of isVowel('b') is false. " + myFunctionTest(false, function () {
+  return isVowel('b');
+}));
+console.assert(isVowel('a') === true, "Test for isVowel failed!");
 
 // Function to calculate the sum of an array of numbers
 function sum(numbers) {
@@ -32,6 +60,11 @@ function sum(numbers) {
   }
   return total;
 }
+/* Test cases for sum function */
+console.log("Expected output of sum([1, 2, 3, 4]) is 10. " + myFunctionTest(10, function () {
+  return sum([1, 2, 3, 4]);
+}));
+console.assert(sum([1, 2, 3, 4]) === 10, "Test for sum failed!");
 
 // Function to calculate the product of an array of numbers
 function multiply(numbers) {
@@ -41,6 +74,11 @@ function multiply(numbers) {
   }
   return result;
 }
+/* Test cases for multiply function */
+console.log("Expected output of multiply([1, 2, 3, 4]) is 24. " + myFunctionTest(24, function () {
+  return multiply([1, 2, 3, 4]);
+}));
+console.assert(multiply([1, 2, 3, 4]) === 24, "Test for multiply failed!");
 
 // Function to reverse a string
 function reverse(str) {
@@ -50,6 +88,11 @@ function reverse(str) {
   }
   return reversed;
 }
+/* Test cases for reverse function */
+console.log("Expected output of reverse('jag testar') is 'ratset gaj'. " + myFunctionTest('ratset gaj', function () {
+  return reverse('jag testar');
+}));
+console.assert(reverse('jag testar') === 'ratset gaj', "Test for reverse failed!");
 
 // Function to find the length of the longest word in an array of words
 function findLongestWord(words) {
@@ -61,6 +104,11 @@ function findLongestWord(words) {
   }
   return longestLength;
 }
+/* Test cases for findLongestWord function */
+console.log("Expected output of findLongestWord(['apple', 'banana', 'orange']) is 6. " + myFunctionTest(6, function () {
+  return findLongestWord(['apple', 'banana', 'orange']);
+}));
+console.assert(findLongestWord(['apple', 'banana', 'orange']) === 6, "Test for findLongestWord failed!");
 
 // Function to filter words longer than a given length from an array of words
 function filterLongWords(words, i) {
@@ -72,6 +120,11 @@ function filterLongWords(words, i) {
   }
   return filteredWords;
 }
+/* Test cases for filterLongWords function */
+console.log("Expected output of filterLongWords(['apple', 'banana', 'orange'], 5) is ['banana', 'orange']. " + myFunctionTest(['banana', 'orange'], function () {
+  return filterLongWords(['apple', 'banana', 'orange'], 5);
+}));
+console.assert(JSON.stringify(filterLongWords(['apple', 'banana', 'orange'], 5)) === JSON.stringify(['banana', 'orange']), "Test for filterLongWords failed!");
 
 //Fiddle modification
 const a = [1, 3, 5, 3, 3];
