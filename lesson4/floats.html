@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Design</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Header */
+        header {
+            background-color: #AFD9E7;            
+            padding: 20px;
+        }
+        
+        /* Menu */
+        nav {
+            background-color: #314F4F;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav li {
+            display: inline;
+            margin-right: 10px;
+        }
+        
+        /* Columns */
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 20px;
+            box-sizing: border-box;
+			background-color: #BBBBBB;
+        }
+        
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #314F4F;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        /* Responsive layout - Tablets and mobiles */
+        @media (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+            
+            nav li {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Header</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li>Menu 1</li>
+            <li>Menu 2</li>
+            <li>Menu 3</li>
+        </ul>
+    </nav>
+    
+    <div class="clearfix">
+        <div class="column">
+            <h2>Column 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        
+        <div class="column">
+            <h2>Column 2</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        
+        <div class="column">
+            <h2>Column 3</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Footer</p>
+    </footer>
+</body>
+</html>
