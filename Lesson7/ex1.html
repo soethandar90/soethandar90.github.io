@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 1 : Banned Word Filter Function</title>
+	    <script>
+        String.prototype.filter = function (bwords) {
+            if (!Array.isArray(bwords) || bwords.length === 0) {
+                return this.toString();
+            }
+
+            let filString = this.toString();
+            bwords.forEach((word) => {
+                const bWordExp = new RegExp("\\b" + word + "\\b", "gi");;
+                filString = filString.replace(bWordExp, '');
+            });
+
+            filString = filString.replace(/\s+/g, ' ').trim();
+            return filString;
+        };
+
+        // Test output
+        console.log("This house is not nice!".filter(['not']));
+    </script>
+</head>
+<body>
+   Look in the Chrome developer console to see the output. CTRL_SHIFT_J
+   <br /><br/>
+   <code>
+   String.prototype.filter = function (bwords) { <br />
+            if (!Array.isArray(bwords) || bwords.length === 0) {<br />
+                return this.toString();<br />
+            }<br />
+
+            let filString = this.toString();<br />
+            bwords.forEach((word) => {<br />
+                const bWordExp = new RegExp("\\b" + word + "\\b", "gi");<br />
+                filString = filString.replace(bWordExp, '');<br />
+            });<br />
+
+            filString = filString.replace(/\s+/g, ' ').trim();<br />
+            return filString;<br />
+        };<br />
+
+        // Test output<br />
+        console.log("This house is not nice!".filter(['not']));<br />
+</code>
+</body>
+</html>

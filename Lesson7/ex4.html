@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 4 : Person, Student, and Professor</title>
+	 <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.greeting = function () {
+            console.logconsole.log("Greetings, my name is " + this.name + " and I am " + this.age + " years old.");
+        };
+
+        Person.prototype.salute = function () {
+            console.log("Good morning! In case I don't see you, good afternoon, good evening, and good night!");
+        };
+		
+        function Student(name, age, major) {
+            Person.call(this, name, age);
+            this.major = major;
+        }
+		
+        Student.prototype = Object.create(Person.prototype);
+		
+        Student.prototype.greeting = function () {
+            console.log("Hey, my name is " + this.name + " and I am studying " + this.major + ".");
+        };
+        function Professor(name, age, department) {
+            Person.call(this, name, age);
+            this.department = department;
+        }
+
+        Professor.prototype = Object.create(Person.prototype);
+
+        Professor.prototype.greeting = function () {
+            console.log("Good day, my name is " + this.name + " and I am in the " + this.department + " department.");
+        };
+		
+        function PersonFunc(name, age) {
+            this.name = name;
+            this.age = age;
+
+            this.greeting = function () {
+                console.logconsole.log("Greetings, my name is " + this.name + " and I am " + this.age + " years old.");
+            };
+
+            this.salute = function () {
+                console.log("Good morning! In case I don't see you, good afternoon, good evening, and good night!");
+            };
+        }
+        function StudentFunc(name, age, major) {
+            PersonFunc.call(this, name, age);
+            this.major = major;
+
+            this.greeting = function () {
+                console.log("Hey, my name is " + this.name + " and I am studying " + this.major + ".");
+            };
+        }
+        function ProfessorFunc(name, age, department) {
+            PersonFunc.call(this, name, age);
+            this.department = department;
+
+            this.greeting = function () {
+                console.log("Good day, my name is " + this.name + " and I am in the " + this.department + " department.");
+            };
+        }
+		
+        const prof1 = new Professor("Dr. Smith", 45, "Physics");
+        const stud1 = new Student("John Doe", 20, "Computer Science");
+        prof1.greeting();
+        prof1.salute();
+        stud1.greeting();
+        stud1.salute();
+		
+        const prof2 = new ProfessorFunc("Dr. Johnson", 50, "Biology");
+        const stud2 = new StudentFunc("Jane Doe", 22, "History");		
+        prof2.greeting();
+        prof2.salute();
+        stud2.greeting();
+        stud2.salute();
+    </script>
+</head>
+<body>
+   Look in the Chrome developer console to see the output. CTRL_SHIFT_J
+   <br/><br/>
+   <code>
+   function Person(name, age) {<br/>
+            this.name = name;<br/>
+            this.age = age;<br/>
+        }<br/>
+        Person.prototype.greeting = function () {<br/>
+            console.logconsole.log("Greetings, my name is " + this.name + " and I am " + this.age + " years old.");<br/>
+        };<br/>
+
+        Person.prototype.salute = function () {<br/>
+            console.log("Good morning! In case I don't see you, good afternoon, good evening, and good night!");<br/>
+        };<br/>
+		
+        function Student(name, age, major) {<br/>
+            Person.call(this, name, age);<br/>
+            this.major = major;<br/>
+        }
+		
+        Student.prototype = Object.create(Person.prototype);<br/>
+		
+        Student.prototype.greeting = function () {<br/>
+            console.log("Hey, my name is " + this.name + " and I am studying " + this.major + ".");<br/>
+        };<br/>
+        function Professor(name, age, department) {<br/>
+            Person.call(this, name, age);<br/>
+            this.department = department;<br/>
+        }<br/>
+
+        Professor.prototype = Object.create(Person.prototype);<br/>
+
+        Professor.prototype.greeting = function () {<br/>
+            console.log("Good day, my name is " + this.name + " and I am in the " + this.department + " department.");<br/>
+        };<br/>
+		
+        function PersonFunc(name, age) {<br/>
+            this.name = name;<br/>
+            this.age = age;<br/>
+
+            this.greeting = function () {<br/>
+                console.logconsole.log("Greetings, my name is " + this.name + " and I am " + this.age + " years old.");<br/>
+            };<br/>
+
+            this.salute = function () {<br/>
+                console.log("Good morning! In case I don't see you, good afternoon, good evening, and good night!");<br/>
+            };<br/>
+        }<br/>
+        function StudentFunc(name, age, major) {<br/>
+            PersonFunc.call(this, name, age);<br/>
+            this.major = major;<br/>
+
+            this.greeting = function () {<br/>
+                console.log("Hey, my name is " + this.name + " and I am studying " + this.major + ".");<br/>
+            };<br/>
+        }<br/>
+        function ProfessorFunc(name, age, department) {<br/>
+            PersonFunc.call(this, name, age);<br/>
+            this.department = department;<br/>
+
+            this.greeting = function () {<br/>
+                console.log("Good day, my name is " + this.name + " and I am in the " + this.department + " department.");<br/>
+            };<br/>
+        }<br/>
+		
+        const prof1 = new Professor("Dr. Smith", 45, "Physics");<br/>
+        const stud1 = new Student("John Doe", 20, "Computer Science");<br/>
+        prof1.greeting();<br/>
+        prof1.salute();<br/>
+        stud1.greeting();<br/>
+        stud1.salute();<br/>
+		
+        const prof2 = new ProfessorFunc("Dr. Johnson", 50, "Biology");<br/>
+        const stud2 = new StudentFunc("Jane Doe", 22, "History");<br/>		
+        prof2.greeting();<br/>
+        prof2.salute();<br/>
+        stud2.greeting();<br/>
+        stud2.salute();<br/>
+   </code>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 3 : Teacher and Person</title>
+	<script>
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.greeting = function () {
+            console.log("Greetings, my name is " + this.name + ".");
+        };
+        function Teacher(name) {
+            Person.call(this, name);
+        }
+        Teacher.prototype = Object.create(Person.prototype);
+        Teacher.prototype.teach = function (subject) {
+            console.log(this.name + " is now teaching " + subject + ".");
+        };
+
+        const teacherPrototype = Object.create(Person.prototype);
+        teacherPrototype.teach = function (subject) {
+            console.log(this.name + " is now teaching " + subject + ".");
+        };
+		
+        // Factory functions
+        function createPerson(name) {
+            const person = Object.create(Person.prototype);
+            person.name = name;
+            return person;
+        }
+        function createTeacher(name) {
+            const teacher = Object.create(teacherPrototype);
+            teacher.name = name;
+            return teacher;
+        }
+
+        const t1 = new Teacher("Ms.Soe");
+        t1.greeting();
+        t1.teach("Science");
+		
+        const t2 = createTeacher("Mr.Toe");
+        t2.greeting();
+        t2.teach("History");
+    </script>
+</head>
+<body>
+   Look in the Chrome developer console to see the output. CTRL_SHIFT_J
+   <br/><br/>
+   
+   <code>
+   function Person(name) {<br/>
+            this.name = name;<br/>
+        }<br/>
+        Person.prototype.greeting = function () {<br/>
+            console.log("Greetings, my name is " + this.name + ".");<br/>
+        };<br/>
+        function Teacher(name) {<br/>
+            Person.call(this, name);<br/>
+        }<br/>
+        Teacher.prototype = Object.create(Person.prototype);<br/>
+        Teacher.prototype.teach = function (subject) {<br/>
+            console.log(this.name + " is now teaching " + subject + ".");<br/>
+        };<br/>
+
+        const teacherPrototype = Object.create(Person.prototype);<br/>
+        teacherPrototype.teach = function (subject) {<br/>
+            console.log(this.name + " is now teaching " + subject + ".");<br/>
+        };<br/>
+		
+        // Factory functions<br/>
+        function createPerson(name) {<br/>
+            const person = Object.create(Person.prototype);<br/>
+            person.name = name;<br/>
+            return person;<br/>
+        }<br/>
+        function createTeacher(name) {<br/>
+            const teacher = Object.create(teacherPrototype);<br/>
+            teacher.name = name;<br/>
+            return teacher;<br/>
+        }<br/>
+
+        const t1 = new Teacher("Ms.Soe");<br/>
+        t1.greeting();<br/>
+        t1.teach("Science");<br/>
+		
+        const t2 = createTeacher("Mr.Toe");<br/>
+        t2.greeting();<br/>
+        t2.teach("History");<br/>
+   </code>
+</body>
+</html>
