@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson 7: Re-implementation of sum(), multiply(), reverse() and filterLongWords() using the map, reduce, and
+    filter</title>
+  <script>
+    /* Runs a test to see if the expected argument is === to the value returned by the function2test argument */
+    function myFunctionTest(expected, function2test) {
+      const result = function2test();
+      if (expected === result) {
+        return "TEST SUCCEEDED";
+      } else {
+        return "TEST FAILED. Expected " + expected + " found " + result;
+      }
+    }
+    // Function to calculate the sum of an array of numbers
+    function sum(numbers) {
+      return numbers.reduce((total, number) => total + number, 0);
+    }
+
+    // Function to calculate the product of an array of numbers
+    function multiply(numbers) {
+      return numbers.reduce((result, number) => result * number, 1);
+    }
+
+    // Function to reverse a string
+    function reverse(str) {
+      return str.split('').reverse().join('');
+    }
+
+    // Function to filter words longer than a given length from an array of words
+    function filterLongWords(words, i) {
+      return words.filter(word => word.length > i);
+    }
+
+    /* Test cases */
+    console.log("Expected output of sum([1, 2, 3, 4]) is 10. " + myFunctionTest(10, function () {
+      return sum([1, 2, 3, 4]);
+    }));
+    console.assert(sum([1, 2, 3, 4]) === 10, "Test for sum failed!");
+
+    console.log("Expected output of multiply([1, 2, 3, 4]) is 24. " + myFunctionTest(24, function () {
+      return multiply([1, 2, 3, 4]);
+    }));
+    console.assert(multiply([1, 2, 3, 4]) === 24, "Test for multiply failed!");
+
+    console.log("Expected output of reverse('jag testar') is 'ratset gaj'. " + myFunctionTest('ratset gaj', function () {
+      return reverse('jag testar');
+    }));
+    console.assert(reverse('jag testar') === 'ratset gaj', "Test for reverse failed!");
+
+    console.log("Expected output of filterLongWords(['apple', 'banana', 'orange'], 5) is ['banana', 'orange']. " + myFunctionTest(['banana', 'orange'], function () {
+      return filterLongWords(['apple', 'banana', 'orange'], 5);
+    }));
+    console.assert(JSON.stringify(filterLongWords(['apple', 'banana', 'orange'], 5)) === JSON.stringify(['banana', 'orange']), "Test for filterLongWords failed!");
+
+  </script>
+</head>
+
+<body>
+  For re-implementation of lab 5 functions, look in the Chrome developer console to see the output. CTRL_SHIFT_J<br />
+  For animation page, click <a href="ascii.html">here</a>.
+</body>
+
+</html>
